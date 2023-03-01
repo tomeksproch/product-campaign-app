@@ -6,4 +6,5 @@ export const ListWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  gap: 2rem;
 `;

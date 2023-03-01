@@ -1,11 +1,15 @@
 import React from "react";
 import {
   ListItemWrapper,
+  BottomItemContent,
+  Name,
   City,
   Active,
   ActiveDot,
 } from "./CampaignListItem.styles";
 import { useNavigate } from "react-router-dom";
+import Button from "../../atoms/Button/Button";
+import { FaWindowClose } from "react-icons/fa";
 
 const CampaignListItem = ({ campaign }) => {
   const { id, name, city, status } = campaign;
@@ -17,13 +21,16 @@ const CampaignListItem = ({ campaign }) => {
 
   return (
     <ListItemWrapper>
-      <h3>{name}</h3>
+      <BottomItemContent>
+        <Name>{name}</Name>
+        <FaWindowClose size="2rem" />
+      </BottomItemContent>
       <City>{city}</City>
       <Active>
         {status ? "Active" : "Unactive"}
         <ActiveDot status={status} />
       </Active>
-      <button onClick={handleClick}>Show Details</button>
+      <Button onClick={handleClick}>Show Details</Button>
     </ListItemWrapper>
   );
 };
