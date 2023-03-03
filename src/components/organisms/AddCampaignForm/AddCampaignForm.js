@@ -27,11 +27,6 @@ const AddCampaignForm = () => {
     handleAddCampaign(campaign);
   };
 
-  //   const navigate = useNavigate();
-  //   const navigateToCampaignPage = () => {
-  //     navigate("/");
-  //   };
-
   return (
     <form onSubmit={handleSubmit}>
       <LabeledInput
