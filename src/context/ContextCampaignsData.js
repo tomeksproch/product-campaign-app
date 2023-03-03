@@ -5,25 +5,29 @@ export const ContextCampaigns = createContext();
 
 export function ContextCampaignsProvider({ children }) {
   const [campaigns, setCampaigns] = useState([]);
+  const [budget, setBudget] = useState();
 
   useEffect(() => {
-    const getCampaigns = async () => {
-      const { data: res } = await axios.get("/campaigns");
-      setCampaigns(res);
-      console.log(res);
-    };
     getCampaigns();
   }, []);
 
-  const handleDeleteCampaigns = async (campaignToDelete) => {
-    await axios.delete(`/campaigns`);
-    setCampaigns(campaigns.filter((c) => c.id !== campaignToDelete.id));
+  const getCampaigns = async () => {
+    const { data: res } = await axios.get("/campaigns");
+    setCampaigns(res);
+
+    const { data: budgetRes } = await axios.get("/budget");
+    setBudget(budgetRes.budget);
+  };
+
+  const handleDeleteCampaigns = async (id) => {
+    await axios.delete(`/campaigns`, { data: { id } });
+    getCampaigns();
   };
 
   const handleAddCampaign = async (newCampaing) => {
-    const { data } = await axios.post("/campaigns", newCampaing);
-    setCampaigns([...campaigns, data]);
-    console.log(data);
+    const response = await axios.post("/campaigns", newCampaing);
+    if (response.status !== 20) return false;
+    getCampaigns();
   };
 
   return (
@@ -32,6 +36,7 @@ export function ContextCampaignsProvider({ children }) {
         campaigns,
         handleDeleteCampaigns,
         handleAddCampaign,
+        budget,
       }}
     >
       {children}

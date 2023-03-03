@@ -1,12 +1,13 @@
 import React from "react";
 import Input from "../../atoms/Input/Input";
+import { InputContainer, StyledLabel } from "./LabeledInput.styles";
 
 const LabeledInput = ({ label, ...rest }) => {
   return (
-    <div>
-      <label>{label}</label>
+    <InputContainer>
       <Input {...rest} />
-    </div>
+      <StyledLabel>{label}</StyledLabel>
+    </InputContainer>
   );
 };
 

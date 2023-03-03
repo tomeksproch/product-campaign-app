@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import RootLayout from "./RootLayout";
-import CampaignPage from "./pages/CampaignPage";
+import CampaignPage from "./pages/CamapignPage/CampaignPage";
 import CampaignAdd from "./pages/CampaignAdd";
 import CampaignDetails from "./pages/CampaignDetails";
 import { ContextCampaignsProvider } from "./context/ContextCampaignsData";

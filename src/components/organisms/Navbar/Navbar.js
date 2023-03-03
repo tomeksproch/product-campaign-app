@@ -1,18 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import campaignLogo from "../../../assets/logo/campaign-logo-example.png";
-import { Logo, NavbarWrapper } from "./Navbar.styles";
-import Button from "../../atoms/Button/Button";
+import { Logo, NavbarWrapper, Budget } from "./Navbar.styles";
 import { useNavigate } from "react-router";
+
+import { ContextCampaigns } from "../../../context/ContextCampaignsData";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { budget } = useContext(ContextCampaigns);
 
   const logoClickNavigate = () => {
     navigate("/");
-  };
-
-  const addCampaignNavigate = () => {
-    navigate("/add");
   };
 
   return (
@@ -22,7 +20,7 @@ const Navbar = () => {
         alt="camapign logo"
         onClick={logoClickNavigate}
       />
-      <Button onClick={addCampaignNavigate}>Add Campaing </Button>
+      <Budget>Your budget: {budget}€</Budget>
     </NavbarWrapper>
   );
 };

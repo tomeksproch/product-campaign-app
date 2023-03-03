@@ -18,7 +18,7 @@ const CampaignListItem = ({ campaign }) => {
   const navigate = useNavigate();
 
   const handleDeleteClick = () => {
-    handleDeleteCampaigns(campaign);
+    handleDeleteCampaigns(id);
   };
 
   const handleClick = () => {

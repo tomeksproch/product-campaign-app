@@ -1,14 +1,15 @@
 import React from "react";
 import Checkbox from "../../atoms/Checkbox/Checkbox";
+import { StyledLabel, Wrapper, CheckboxStatus } from "./LabeledCheckbox.styles";
 
-const LabeledCheckbox = ({ label, ...rest }) => {
+const LabeledCheckbox = ({ ...rest }) => {
   return (
-    <div>
-      <label>
-        <Checkbox {...rest} />
-        {label}
-      </label>
-    </div>
+    <Wrapper>
+      <CheckboxStatus>Unactive</CheckboxStatus>
+      <Checkbox {...rest} />
+      <StyledLabel htmlFor="switch" status={rest.checked} />
+      <CheckboxStatus>Active</CheckboxStatus>
+    </Wrapper>
   );
 };
 

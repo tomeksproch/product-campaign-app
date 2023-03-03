@@ -10,3 +10,9 @@ export const Logo = styled.img`
   height: 6rem;
   cursor: pointer;
 `;
+
+export const Budget = styled.p`
+  color: ${({ theme }) => theme.colors.black};
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-weight: bold;
+`;
