@@ -9,7 +9,7 @@ import RootLayout from "./RootLayout";
 import CampaignPage from "./pages/CampaignPage";
 import CampaignAdd from "./pages/CampaignAdd";
 import CampaignDetails from "./pages/CampaignDetails";
-import CampaignsDataProvider from "./context/CampaignsDataContext";
+import { ContextCampaignsProvider } from "./context/ContextCampaignsData";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/styles/theme";
 
@@ -25,11 +25,11 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <CampaignsDataProvider>
+    <ContextCampaignsProvider>
       <ThemeProvider theme={theme}>
         <RouterProvider router={router} />
       </ThemeProvider>
-    </CampaignsDataProvider>
+    </ContextCampaignsProvider>
   );
 }
 

@@ -22,6 +22,9 @@ export const Name = styled.h2``;
 
 export const City = styled.div`
   padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 export const CityIcon = styled.img``;
 

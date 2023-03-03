@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   ListItemWrapper,
   BottomItemContent,
@@ -9,11 +9,17 @@ import {
 } from "./CampaignListItem.styles";
 import { useNavigate } from "react-router-dom";
 import Button from "../../atoms/Button/Button";
-import { FaWindowClose } from "react-icons/fa";
+import { FaWindowClose, FaMapMarkerAlt } from "react-icons/fa";
+import { ContextCampaigns } from "../../../context/ContextCampaignsData";
 
 const CampaignListItem = ({ campaign }) => {
   const { id, name, city, status } = campaign;
+  const { handleDeleteCampaigns } = useContext(ContextCampaigns);
   const navigate = useNavigate();
+
+  const handleDeleteClick = () => {
+    handleDeleteCampaigns(campaign);
+  };
 
   const handleClick = () => {
     navigate(`/details/${id}`);
@@ -23,9 +29,12 @@ const CampaignListItem = ({ campaign }) => {
     <ListItemWrapper>
       <BottomItemContent>
         <Name>{name}</Name>
-        <FaWindowClose size="2rem" />
+        <FaWindowClose size="2rem" onClick={handleDeleteClick} />
       </BottomItemContent>
-      <City>{city}</City>
+      <City>
+        <FaMapMarkerAlt size="1rem" />
+        {city}
+      </City>
       <Active>
         {status ? "Active" : "Unactive"}
         <ActiveDot status={status} />

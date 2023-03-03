@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { CamapignsDataContext } from "../../../context/CampaignsDataContext";
-import CampaignListItem from "../CampaignListItem/CampaignListItem";
+import CampaignListItem from "../../molecules/CampaignListItem/CampaignListItem";
 import { ListWrapper } from "./CampaignsList.styles";
+import { ContextCampaigns } from "../../../context/ContextCampaignsData";
 
 const CampaignsList = () => {
-  const { campaignsData } = useContext(CamapignsDataContext);
+  const { campaigns } = useContext(ContextCampaigns);
+
   return (
     <ListWrapper>
-      {campaignsData.map((campaign) => (
+      {campaigns.map((campaign) => (
         <CampaignListItem key={campaign.id} campaign={campaign} />
       ))}
     </ListWrapper>

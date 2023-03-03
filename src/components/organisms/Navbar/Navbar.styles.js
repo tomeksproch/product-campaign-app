@@ -8,4 +8,5 @@ export const NavbarWrapper = styled.div`
 
 export const Logo = styled.img`
   height: 6rem;
+  cursor: pointer;
 `;

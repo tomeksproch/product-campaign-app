@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { CamapignsDataContext } from "../context/CampaignsDataContext";
+import { ContextCampaigns } from "../context/ContextCampaignsData";
 
 const CampaignDetails = () => {
   const { id } = useParams();
-  const { campaignsData } = useContext(CamapignsDataContext);
-  const campaign = campaignsData.find((c) => c.id === id);
+  const { campaigns } = useContext(ContextCampaigns);
+  const campaign = campaigns.find((c) => c.id === id);
 
   if (!campaign) {
     return <div>Campaign not found</div>;
