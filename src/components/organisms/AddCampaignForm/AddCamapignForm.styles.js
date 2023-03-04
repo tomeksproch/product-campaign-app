@@ -29,4 +29,5 @@ export const ButtonsWrapper = styled.div`
   max-width: 350px;
   justify-content: space-around;
   padding-top: 1rem;
+  margin: 0 auto;
 `;

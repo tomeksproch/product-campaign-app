@@ -5,7 +5,8 @@ export const ButtonWrapper = styled.button`
   color: ${(props) => props.textColor || "#fff"};
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 0.5rem 1rem;
   font-size: 16px;
   cursor: pointer;
+  margin: 0 0.25rem;
 `;

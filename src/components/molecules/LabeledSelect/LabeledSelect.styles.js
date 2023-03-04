@@ -20,18 +20,13 @@ export const SelectContainer = styled.div`
   input:focus + label {
     color: black;
   }
-
-  input:focus + label,
-  input.is-valid + label {
-    transform: translateY(-100%) scale(0.75);
-  }
 `;
 
 export const StyledLabel = styled.label`
   display: block;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-100%) scale(0.75);
   left: 16px;
   color: rgba(0, 0, 0, 0.5);
   transform-origin: left top;

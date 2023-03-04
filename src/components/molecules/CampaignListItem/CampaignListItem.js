@@ -6,6 +6,7 @@ import {
   City,
   Active,
   ActiveDot,
+  CloseIconStyles,
 } from "./CampaignListItem.styles";
 import { useNavigate } from "react-router-dom";
 import Button from "../../atoms/Button/Button";
@@ -27,19 +28,29 @@ const CampaignListItem = ({ campaign }) => {
 
   return (
     <ListItemWrapper>
-      <BottomItemContent>
-        <Name>{name}</Name>
-        <FaWindowClose size="2rem" onClick={handleDeleteClick} />
-      </BottomItemContent>
-      <City>
-        <FaMapMarkerAlt size="1rem" />
-        {city}
-      </City>
-      <Active>
-        {status ? "Active" : "Unactive"}
-        <ActiveDot status={status} />
-      </Active>
-      <Button onClick={handleClick}>Show Details</Button>
+      <div>
+        <BottomItemContent>
+          <Name>{name}</Name>
+          <CloseIconStyles>
+            <FaWindowClose
+              size="25px"
+              color={"#FF8383"}
+              onClick={handleDeleteClick}
+            />
+          </CloseIconStyles>
+        </BottomItemContent>
+        <City>
+          <FaMapMarkerAlt size="1rem" />
+          {city}
+        </City>
+        <Active>
+          {status ? "Active" : "Unactive"}
+          <ActiveDot status={status} />
+        </Active>
+      </div>
+      <Button onClick={handleClick} bgColor={"#3795BD"}>
+        Show Details
+      </Button>
     </ListItemWrapper>
   );
 };

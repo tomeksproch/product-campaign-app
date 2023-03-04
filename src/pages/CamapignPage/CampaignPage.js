@@ -11,14 +11,16 @@ import {
 const CampaignPage = () => {
   const navigate = useNavigate();
   const addCampaignNavigate = () => {
-    navigate("/add");
+    navigate("/add/0");
   };
 
   return (
     <CampaignPageWrapper>
       <AddWrapper>
         <AddText>Add Campaign</AddText>
-        <Button onClick={addCampaignNavigate}>+ </Button>
+        <Button onClick={addCampaignNavigate} bgColor={"#8FCB81"}>
+          +
+        </Button>
       </AddWrapper>
       <CampaignsList />
     </CampaignPageWrapper>
