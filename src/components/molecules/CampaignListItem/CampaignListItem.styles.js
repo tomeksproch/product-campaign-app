@@ -6,7 +6,7 @@ export const ListItemWrapper = styled.div`
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.white};
   height: auto;
-  width: clamp(350px, 33%, 450px);
+  width: clamp(350px, 33%, 400px);
   border-radius: 24px;
   padding: 2rem;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
