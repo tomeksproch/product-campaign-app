@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import LabeledSelect from "../../molecules/LabeledSelect/LabeledSelect";
 import KeywordsSelect from "../../molecules/KeywordsSelect/KeywordsSelect";
 import axios from "axios";
+import Toaster from "../../atoms/Toaster/Toaster";
 
 const AddCampaignForm = () => {
   const [suggestedKeywords, setSuggestedKeywords] = useState([]);
@@ -23,6 +24,7 @@ const AddCampaignForm = () => {
     city: "",
     radius: 0,
   });
+  const [toaster, setToaster] = useState({ show: false, msg: "", status: "" });
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -50,7 +52,13 @@ const AddCampaignForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let response = await handleAddCampaign(campaign);
-    if (response) navigate("/");
+    if (response.status !== 200) {
+      setToaster({
+        show: true,
+        msg: response.response.data,
+        status: "error",
+      });
+    } else navigate("/");
   };
 
   const handleKeywordChange = async (e) => {
@@ -82,8 +90,15 @@ const AddCampaignForm = () => {
     setCampaign({ ...campaign, keywords: tmp_selectedKeywords });
   };
 
+  const closeToaster = () => {
+    setToaster({ show: false, msg: "", error: "" });
+  };
+
   return (
     <Wrapper>
+      {toaster.show && (
+        <Toaster toaster={toaster} closeToaster={closeToaster} />
+      )}
       <h2>{id > 0 ? "Edit campaign!" : "Add campaign!"}</h2>
       <StyledForm>
         <LabeledInput

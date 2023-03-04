@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   ListItemWrapper,
   BottomItemContent,
@@ -12,10 +12,12 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../atoms/Button/Button";
 import { FaWindowClose, FaMapMarkerAlt } from "react-icons/fa";
 import { ContextCampaigns } from "../../../context/ContextCampaignsData";
+import Toaster from "../../atoms/Toaster/Toaster";
 
 const CampaignListItem = ({ campaign }) => {
   const { id, name, city, status } = campaign;
   const { handleDeleteCampaigns } = useContext(ContextCampaigns);
+  const [toaster, setToaster] = useState({ show: false, msg: "", status: "" });
   const navigate = useNavigate();
 
   const handleDeleteClick = () => {
@@ -26,8 +28,15 @@ const CampaignListItem = ({ campaign }) => {
     navigate(`/details/${id}`);
   };
 
+  const closeToaster = () => {
+    setToaster({ show: false, msg: "", error: "" });
+  };
+
   return (
     <ListItemWrapper>
+      {toaster.show && (
+        <Toaster toaster={toaster} closeToaster={closeToaster} />
+      )}
       <div>
         <BottomItemContent>
           <Name>{name}</Name>
@@ -44,7 +53,7 @@ const CampaignListItem = ({ campaign }) => {
           {city}
         </City>
         <Active>
-          {status ? "Active" : "Unactive"}
+          {status ? "Active" : "Inactive"}
           <ActiveDot status={status} />
         </Active>
       </div>

@@ -31,12 +31,14 @@ export function ContextCampaignsProvider({ children }) {
     getCampaigns();
   };
 
-  const handleAddCampaign = async (newCampaing) => {
-    const response = await axios.post("/campaigns", newCampaing);
-
-    if (response.status !== 200) return false;
+  const handleAddCampaign = async (newCampaign) => {
+    const response = await axios
+      .post("/campaigns", newCampaign)
+      .catch((error) => {
+        return error;
+      });
     getCampaigns();
-    return true;
+    return response;
   };
 
   return (

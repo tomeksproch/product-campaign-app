@@ -5,7 +5,7 @@ import { StyledLabel, Wrapper, CheckboxStatus } from "./LabeledCheckbox.styles";
 const LabeledCheckbox = ({ ...rest }) => {
   return (
     <Wrapper>
-      <CheckboxStatus>Unactive</CheckboxStatus>
+      <CheckboxStatus>Inactive</CheckboxStatus>
       <Checkbox {...rest} />
       <StyledLabel htmlFor="switch" status={rest.checked} />
       <CheckboxStatus>Active</CheckboxStatus>
