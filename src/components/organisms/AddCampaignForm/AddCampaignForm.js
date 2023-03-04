@@ -5,9 +5,10 @@ import LabeledCheckbox from "../../molecules/LabeledCheckbox/LabeledCheckbox";
 import LabeledInput from "../../molecules/LabeledInput/LabeledInput";
 import { StyledForm, Wrapper, ButtonsWrapper } from "./AddCamapignForm.styles";
 import { useNavigate } from "react-router";
+import LabeledSelect from "../../molecules/LabeledSelect/LabeledSelect";
 
 const AddCampaignForm = () => {
-  const { handleAddCampaign } = useContext(ContextCampaigns);
+  const { handleAddCampaign, cities } = useContext(ContextCampaigns);
   const [campaign, setCampaign] = useState({
     name: "",
     keywords: "",
@@ -17,6 +18,7 @@ const AddCampaignForm = () => {
     city: "",
     radius: 0,
   });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -71,7 +73,8 @@ const AddCampaignForm = () => {
           checked={campaign.status}
           onChange={handleChange}
         />
-        <LabeledInput
+        <LabeledSelect
+          options={cities}
           label="City"
           name="city"
           value={campaign.city}
@@ -86,6 +89,7 @@ const AddCampaignForm = () => {
           onChange={handleChange}
           required
         />
+
         <ButtonsWrapper>
           <Button
             bgColor="#FF8383"
