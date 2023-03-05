@@ -8,32 +8,34 @@ export function ContextCampaignsProvider({ children }) {
   const [budget, setBudget] = useState();
   const [cities, setCities] = useState();
 
+  const API_URL = "https://product-campaign-app-api.herokuapp.com";
+
   useEffect(() => {
     getCampaigns();
     getCities();
   }, []);
 
   const getCampaigns = async () => {
-    const { data: res } = await axios.get("/campaigns");
+    const { data: res } = await axios.get(`${API_URL}/campaigns`);
     setCampaigns(res);
 
-    const { data: budgetRes } = await axios.get("/budget");
+    const { data: budgetRes } = await axios.get(`${API_URL}/budget`);
     setBudget(budgetRes.budget);
   };
 
   const getCities = async () => {
-    const { data: citiesRes } = await axios.get("/cities");
+    const { data: citiesRes } = await axios.get(`${API_URL}/cities`);
     setCities(citiesRes);
   };
 
   const handleDeleteCampaigns = async (id) => {
-    await axios.delete(`/campaigns`, { data: { id } });
+    await axios.delete(`${API_URL}/campaigns`, { data: { id } });
     getCampaigns();
   };
 
   const handleAddCampaign = async (newCampaign) => {
     const response = await axios
-      .post("/campaigns", newCampaign)
+      .post(`${API_URL}/campaigns`, newCampaign)
       .catch((error) => {
         return error;
       });

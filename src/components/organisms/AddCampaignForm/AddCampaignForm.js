@@ -67,7 +67,9 @@ const AddCampaignForm = () => {
     setKeyword(value);
     let suggestedKeywordsFound = ["No keywords found"];
     if (value.length > 2) {
-      const response = await axios.get(`/keywords?keyword=${value}`);
+      const response = await axios.get(
+        `https://product-campaign-app-api.herokuapp.com/keywords?keyword=${value}`
+      );
       if (response.data.length > 0) suggestedKeywordsFound = response.data;
     }
     setSuggestedKeywords(suggestedKeywordsFound);
